@@ -1,0 +1,55 @@
+/* Gallery styling */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    gap: 16px;
+    margin: 20px;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Flexbox Container Styling */
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 20px;
+}
+
+.box {
+    width: 30%;
+    background-color: #4c93af;
+    color: rgb(206, 243, 242);
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.box:hover {
+    background-color: #4c93af;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .flex-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .box {
+        width: 80%;
+        margin-bottom: 10px;
+    }
+
+    /* For smaller screen, we will make the gallery images stack in 1 column */
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}
