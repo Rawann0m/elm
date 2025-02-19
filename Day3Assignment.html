@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .error { color: red; font-size: 14px; }
+        input { display: block; margin-bottom: 10px; padding: 8px; }
+    </style>
+</head>
+<body>
+
+    <h2>Register</h2>
+    <form id="myForm">
+        <input type="text" id="name" placeholder="Full Name">
+        <span id="nameError" class="error"></span>
+
+        <input type="email" id="email" placeholder="Email">
+        <span id="emailError" class="error"></span>
+
+        <input type="password" id="password" placeholder="Password">
+        <span id="passwordError" class="error"></span>
+
+        <button type="submit">Submit</button>
+        <h2>User List</h2>
+        <button onclick="console.log(getusers())">Get Users</button>
+        <div id="userList"></div>
+    </form>
+
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            let isValid = true;
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+
+            // Clear previous errors
+            document.getElementById("nameError").innerText = "";
+            document.getElementById("emailError").innerText = "";
+            document.getElementById("passwordError").innerText = "";
+
+            // Validate Name
+            if (name === "") {
+                document.getElementById("nameError").innerText = "Name is required";
+                isValid = false;
+            }
+
+            // Validate Email
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email === "") {
+                document.getElementById("emailError").innerText = "Email is required";
+                isValid = false;
+            } else if (!emailPattern.test(email)) {
+                document.getElementById("emailError").innerText = "Invalid email format";
+                isValid = false;
+            }
+
+            // Validate Password
+            let passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (password === "") {
+                document.getElementById("passwordError").innerText = "Password is required";
+                isValid = false;
+            } else if (!passwordPattern.test(password)) {
+                document.getElementById("passwordError").innerText = "Password must be at least 8 characters, with letters & numbers";
+                isValid = false;
+            }
+
+            // If everything is valid, submit form
+            if (isValid) {
+                alert("Form submitted successfully!");
+                this.submit(); // Uncomment to actually submit the form
+            }
+        });
+        const multiply = (a, b) => a * b;
+            console.log(multiply(2, 2));
+
+            const fetchdata= () => {
+                return new Promise((resolve,reject) =>{
+                    setTimeout(() => resolve("data recieved"),2000);
+                });
+                
+            fetchdata().then(data => console.log(data)).catch(err => console.error(err));
+            };
+
+            //async await
+            const getData = async()=>{
+                let response = await fetchdata();
+                console.log(response);
+            };
+            getData();
+
+            const getusers= async()=>{
+                let userList = document.getElementById("userList");
+                userList.innerHTML = "Loading...";
+                
+                try{
+                    let response = await fetch("https://jsonplaceholder.typicode.com/users");
+                    let data= await response.json();
+
+                    userList.innerHTML = "";
+
+                    console.log(data);
+                    data.forEach(user => {
+                    let div = document.createElement("div");
+                    div.textContent = `${user.name} - ${user.email}`;
+                    userList.appendChild(div);
+                });
+
+                }
+                
+                catch(error) {
+                    console.error("Error:", error);
+
+           }
+            
+            };
+           
+    </script>
+
+</body>
