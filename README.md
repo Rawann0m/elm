@@ -1,16 +1,33 @@
-# Training Program Tasks
+○ Project Overview
+It is a registration form i tried to use TailwindCSS, Material UI, and Animate.css for styling and animations and it has dark mode feature.
 
-This repository contains all the tasks and assignments completed during my training program. It includes various coding exercises, projects, and challenges that I worked on.
+○ Setup Instructions
+Clone the Repository
+Navigate to the Project Folder
+Install Dependencies
+Set up TailwindCSS
+Build the CSS
+Run the Development Server
+Open the Form in Your Browser
 
-## Features
-- Contains tasks related to JavaScript, HTML, and other programming exercises.
-- Implements various concepts learned during the training program.
+○ Features Implemented
+TailwindCSS for Styling
+Fully responsive
+Dark Mode Toggle
+Input Validation
 
-##TypeScript Class Task
-in this task i was asked to work on 5 tasks with a bouns task and i used TypeScript and used Node.js.
-- section 1: Type Annotations & Functions
-- section 2: Interfaces & Object Types
-- section 3: Classes & OOP
-- section 4: Generics & Utility Types
-- section 5: TypeScript with Async/Await
-- Bonus Challenge
+○ Technologies Used
+TailwindCSS 
+Material UI
+JavaScript 
+HTML
+
+○ How to Contribute
+Fork the Repository
+Clone Your Fork
+Create a New Branch
+Make Your Changes
+Test Your Changes
+Commit Your Changes
+Push to Your Fork
+Create a Pull Request
